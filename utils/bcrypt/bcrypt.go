@@ -11,3 +11,10 @@ func HashPass(pass string) (string, error) {
 
 	return string(hash), err
 }
+
+func CompPass(pass string, hash string) error {
+	password := []byte(pass)
+	hashed := []byte(hash)
+
+	return bcrypt.CompareHashAndPassword(hashed, password)
+}

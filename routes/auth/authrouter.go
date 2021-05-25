@@ -12,4 +12,5 @@ func AuthRouter(auth *fiber.Router) {
 	a := *auth
 
 	a.Post("/signup", validations.CheckSignUpReq, middlewares.CheckUniqEmail, authcontroller.SignUpHandler)
+	a.Post("/signin", validations.CheckSignInReq, authcontroller.SignInHandler)
 }

@@ -16,10 +16,11 @@ type ErrorResponse struct {
 	Value       string
 }
 
-func CheckErr(err error, c *fiber.Ctx) {
+func CheckErr(err error, c *fiber.Ctx) interface{} {
 	if err != nil {
-		c.Status(fiber.StatusInternalServerError).JSON(resbodies.FailRes("message", err.Error()))
-		return
+		return c.Status(fiber.StatusInternalServerError).JSON(resbodies.FailRes("message", err.Error()))
+	} else {
+		return c.Next()
 	}
 }
 

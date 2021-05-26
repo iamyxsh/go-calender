@@ -16,10 +16,14 @@ func SignUpHandler(c *fiber.Ctx) error {
 	user := c.Locals("body").(*authreqbodies.SignUpReq)
 
 	hashedPass, err := bcrypt.HashPass(user.Password)
-	errorhandler.CheckErr(err, c)
+	if err != nil {
+		return errorhandler.SendErr(err, c)
+	}
 
 	err = Users.CreateUser(user.Name, user.Email, hashedPass)
-	errorhandler.CheckErr(err, c)
+	if err != nil {
+		return errorhandler.SendErr(err, c)
+	}
 
 	return c.Status(fiber.StatusCreated).JSON(resbodies.SuccessRes("msg", "The user was created successfully."))
 }
@@ -38,8 +42,9 @@ func SignInHandler(c *fiber.Ctx) error {
 	}
 
 	token, e := jwt.CreateToken(user.ID.Hex())
-	errorhandler.CheckErr(e, c)
-
+	if e != nil {
+		return errorhandler.SendErr(err, c)
+	}
 	user.Password = ""
 
 	return c.Status(fiber.StatusAccepted).JSON(resbodies.SuccessRes("payload", fiber.Map{"token": token, "user": user}))

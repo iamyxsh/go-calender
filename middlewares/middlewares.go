@@ -26,9 +26,9 @@ func CheckUniqEmail(c *fiber.Ctx) error {
 
 func IsAuth(c *fiber.Ctx) error {
 	userid, err := jwt.CheckToken(c)
-
-	errorhandler.CheckErr(err, c)
-
+	if err != nil {
+		return errorhandler.SendErr(err, c)
+	}
 	c.Locals("userid", userid)
 	return c.Next()
 }

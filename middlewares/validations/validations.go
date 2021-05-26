@@ -58,3 +58,20 @@ func CheckCreateMeetingReq(c *fiber.Ctx) error {
 
 	return c.Next()
 }
+
+func CheckCreateSlotReq(c *fiber.Ctx) error {
+	createBody := new(meetingreqbodies.CreateSlotReq)
+	errorhandler.CheckBodyParser(c, createBody)
+
+	errors := errorhandler.ValidateStruct(*createBody)
+
+	if errors != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(resbodies.FailRes("errors", fiber.Map{
+			"errors": errors,
+		}))
+	}
+
+	c.Locals("body", createBody)
+
+	return c.Next()
+}

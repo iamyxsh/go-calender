@@ -20,4 +20,13 @@ type Meeting struct {
 	StartTime        time.Time          `json:"start" bson:"start"`
 	EndTime          time.Time          `json:"end" bson:"end"`
 	Interval         time.Duration      `json:"interval" bson:"interval"`
+	Slots            []time.Time        `json:"slots" bson:"slots"`
+}
+
+type Slot struct {
+	mgm.DefaultModel `bson:",inline"`
+	MeetingID        primitive.ObjectID `json:"meetingid" bson:"meetingid"`
+	Name             string             `json:"name" bson:"name"`
+	Email            string             `json:"email" bson:"email"`
+	Start            time.Time          `json:"start" bson:"start"`
 }

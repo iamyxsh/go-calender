@@ -10,3 +10,10 @@ type CreateMeetingReq struct {
 	EndMin    int `json:"endmin" validate:"max=60,min=0,required"`
 	Slot      int `json:"slot" validate:"max=60,min=0,required"`
 }
+
+type CreateSlotReq struct {
+	Name      string `json:"name" validate:"max=20,min=5,required"`
+	Email     string `json:"email" validate:"max=30,min=5,required,email"`
+	Start     string `json:"start" validate:"required"`
+	MeetingId string `json:"meetingid" validate:"required"`
+}

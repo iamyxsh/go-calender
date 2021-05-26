@@ -12,4 +12,7 @@ func MettingRouter(meeting *fiber.Router) {
 	m := *meeting
 
 	m.Post("/link", middlewares.IsAuth, validations.CheckCreateMeetingReq, meetingcontroller.GenerateLink)
+	m.Get("/link/:id", meetingcontroller.GetLinkDetails)
+
+	m.Post("/slot", validations.CheckCreateSlotReq, meetingcontroller.CreateSlot)
 }

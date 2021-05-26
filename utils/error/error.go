@@ -16,12 +16,8 @@ type ErrorResponse struct {
 	Value       string
 }
 
-func CheckErr(err error, c *fiber.Ctx) interface{} {
-	if err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(resbodies.FailRes("message", err.Error()))
-	} else {
-		return c.Next()
-	}
+func SendErr(err error, c *fiber.Ctx) error {
+	return c.Status(fiber.StatusInternalServerError).JSON(resbodies.FailRes("message", err.Error()))
 }
 
 func HandleErr(e error) {
@@ -46,7 +42,7 @@ func ValidateStruct(body interface{}) []*ErrorResponse {
 	return errors
 }
 
-func CheckBodyParser(c *fiber.Ctx, schema interface{}) {
+func CheckBodyParser(c *fiber.Ctx, schema interface{}) error {
 	err := c.BodyParser(schema)
-	CheckErr(err, c)
+	return err
 }

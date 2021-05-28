@@ -1,0 +1,12 @@
+{
+	"type": "service_account",
+	"project_id": "emaily-dev-287012",
+	"private_key_id": "30ca06b55e5278d62a83d69adc3efa87d1bea315",
+	"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDoG0/fTWuHEbav\nXFkdVdRpiJ83vfNcBdIipYE2f40/if0uHzOK01MsAYdodvrHjV0WBWFLE+80I43b\nMlN3qNzzbDEGLNishsbkFtS6+qbTN0uqQo5wJ47E7YQpH3hsFVF4PLNFmfInbQ1Z\nf1vMinenpYUm7F5XbSWoxymkNpJoIRowBEmR3Yuj3GAMfv0GsoFhQGlYKqnyWlQs\nTh6hQsR55UiRWnT5/7hDKyEpub6WudLXLje4ObFX/dR3rmTJOnkbXdlwI3OKQWT4\n7mT7ZLRJ1VdHgh+NBL5r68ZyNymO2JnnO1E19kF0PszJMynhAHo9QEjVMGQuu2xm\nT8C86GSJAgMBAAECggEADky5duTUjDeiiUr/mAO00JQo2ASxQLEAnV8UNvz0gS7B\njQUB1kqW+BH3i09yO5dZXe0SrY8SuIP8vj2LYCbEhxA6NHrQlg9/IygHbuYYn1Br\nrleHokADpx0JfIWadBE7qdRWiKIXhceNkB8dMxywSsEzMv7SwKDiNjPf/ESa8ESE\nxzzR8JefgppxQE5eH0I4twVNnLQbkoCONA0PDVp/V+HxJAPFmAuz6pOYpGJIGGW1\nZGNbeUl1mFNHphQAgH6tEZdQGuSQZcieykrlJecgZfbTJGc/47KSlxAODsi3KikI\najMYUcjg6+UBEc6apnr+NXLwyVaXyH8v3okjMUXOYQKBgQD4+Xl0reBGfcqCHlQ8\nM1ykGYzuTAHi66A1tJXOSsc2y8YMLngB4BVd8HdHEUm5IBGbIosZJN/yGGeR6qib\nEQhn6W+tKo5Jh9iFS8mIag0MJ9Yu5kS/oTgRzJkwQkDLNtIgIoAwEcwVQevJc9d0\nw1yYKYp8FJKhMj0XNX8/dV2WYQKBgQDup/0pLOZFmhn1yToT4lkjppFOPI/arq7a\nEnrAE46V+ElBUZKwXFXvcEWIGZl7DtSM0Z7fSiW9ZEINvqJhwvaA3RJ3jPDNtBLI\nZZrkJDUXM8Zzyrn3zst1ll2WZUyXv3KlN4fPmpshAyYV/nXjUNhor8C41XvTOlBb\nmJ8hfX+vKQKBgQC5UJdCbZkdXsu4hfKUzHYL/qiTRiexS0h4MO3AGpClDI9gycWx\nP6UnwrBFSWziSihQnCmEkZnOjLOqPEs7ADaNgYcKET7PJDnZHUvoKWeEwLH/Po21\nRL6DIRJ0hRvNJgTIvmVDYjvRJrvluj+IPVFSQLk/GeD58nbeK4eHKEh8gQKBgQDj\naT4KK1etgR81ny7xXaFVIFabt4fYeNXyxOMk/j3DWBjt3f4qgYH9q/0FqGcg5MvS\n97gsy2nU46ExmbL/9xiPSJldQ/b9/JZdULxcosfYOSTkl4vHv80OWl8JfbOTcgGb\nv6NxRsCFn4t+L8BEAHiGoNrDBeJ9L7b84RzZe83cqQKBgQDxO/stm8hI4TvBtNg1\nXzF8j6hHQy1fBOZXA15dtozqs/ER+3VY/lnCAVv5hhKGiiQYr46uiUMo9E28hwtj\nMHVJsUAtkvyKylEx+n+r1lDuKUPhU51UD5BlY9GO1Usy9Uefb6anv6KAmxEQrStk\nat3ldF7adYjFGSPfJWGWNI9NYA==\n-----END PRIVATE KEY-----\n",
+	"client_email": "calender-api@emaily-dev-287012.iam.gserviceaccount.com",
+	"client_id": "114089147422471007345",
+	"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+	"token_uri": "https://oauth2.googleapis.com/token",
+	"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+	"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/calender-api%40emaily-dev-287012.iam.gserviceaccount.com"
+}

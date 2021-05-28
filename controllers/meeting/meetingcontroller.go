@@ -7,6 +7,7 @@ import (
 	"calendly/schema/resbodies"
 	"calendly/utils"
 	errorhandler "calendly/utils/error"
+	"errors"
 	"fmt"
 	"time"
 
@@ -17,10 +18,10 @@ import (
 func GenerateLink(c *fiber.Ctx) error {
 	body := c.Locals("body").(*meetingreqbodies.CreateMeetingReq)
 
-	// userid, err := primitive.ObjectIDFromHex(c.Locals("userid").(string))
-	// if err != nil {
-	// 	return errorhandler.SendErr(err, c)
-	// }
+	userid, err := primitive.ObjectIDFromHex(c.Locals("userid").(string))
+	if err != nil {
+		return errorhandler.SendErr(err, c)
+	}
 
 	month, err := utils.ReturnMonth(body.Month)
 	if err != nil {
@@ -35,12 +36,12 @@ func GenerateLink(c *fiber.Ctx) error {
 		return errorhandler.SendErr(err, c)
 	}
 
-	utils.CreateSlots(start, interval, end)
+	slotArr := utils.CreateSlots(start, interval, end)
 
-	// err = Meeting.CreateMeeting(userid, start, end, interval)
-	// if err != nil {
-	// 	return errorhandler.SendErr(err, c)
-	// }
+	err = Meeting.CreateMeeting(userid, start, end, interval, slotArr)
+	if err != nil {
+		return errorhandler.SendErr(err, c)
+	}
 
 	return c.Status(fiber.StatusCreated).JSON(resbodies.SuccessRes("msg", "Meeting created successfully"))
 }
@@ -77,9 +78,17 @@ func CreateSlot(c *fiber.Ctx) error {
 		return errorhandler.SendErr(err, c)
 	}
 
-	// meeting, err := Meeting.FindMeetingById(meetingid)
+	meeting, err := Meeting.FindMeetingById(meetingid)
+	if err != nil {
+		return errorhandler.SendErr(err, c)
+	}
 
-	// utils.CheckTime(meeting.StartTime, slot, meeting.EndTime)
+	ok := utils.CheckTime(meeting.Slots, slot)
+
+	if !ok {
+		e := errors.New("slot is not valid")
+		return errorhandler.SendErr(e, c)
+	}
 
 	return c.Status(fiber.StatusCreated).JSON(resbodies.SuccessRes("msg", "Slot created successfully."))
 }

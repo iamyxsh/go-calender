@@ -2,6 +2,7 @@ package Meeting
 
 import (
 	"calendly/schema/entities"
+	"errors"
 	"time"
 
 	"github.com/kamva/mgm/v3"
@@ -16,6 +17,7 @@ type MeetingUser struct {
 	StartTime        time.Time       `json:"start" bson:"start"`
 	EndTime          time.Time       `json:"end" bson:"end"`
 	Interval         time.Duration   `json:"interval" bson:"interval"`
+	Slots            []time.Time     `json:"slots" bson:"slots"`
 	User             []entities.User `json:"user" bson:"user"`
 }
 
@@ -37,8 +39,12 @@ func FindMeetingById(id primitive.ObjectID) (MeetingUser, error) {
 	meetArr := new([]MeetingUser)
 	username := mgm.Coll(u).Name()
 
-	err := mgm.Coll(meet).SimpleAggregate(meetArr, bson.M{operator.Match: bson.M{"_id": id}}, builder.Lookup(username, "userid", "_id", "user"), bson.M{operator.Project: bson.M{"user.password": 0}})
+	mgm.Coll(meet).SimpleAggregate(meetArr, bson.M{operator.Match: bson.M{"_id": id}}, builder.Lookup(username, "userid", "_id", "user"), bson.M{operator.Project: bson.M{"user.password": 0}})
 	m := *meetArr
 
-	return m[0], err
+	if !(len(m) > 0) {
+		return *new(MeetingUser), errors.New("meeting not found")
+	}
+
+	return m[0], nil
 }
